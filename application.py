@@ -3,7 +3,7 @@ from flask import Flask,render_template,request
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
-def main_page():
+def main():
     if request.method == 'GET':
         text = "ここに結果が出力されます"
         return render_template("page.html",text=text)
@@ -14,4 +14,7 @@ def main_page():
 
 ## 実行
 if __name__ == "__main__":
-    app.run(debug=True)
+    try:
+        app.run(debug=True)
+    except Exception as e:
+        print(e)
