@@ -3,17 +3,22 @@
     <head>
         <meta charset="utf-8">
         <title>Page</title>
+        <link href="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/datatables.min.css" rel="stylesheet"/>
+         <script src="https://cdn.datatables.net/v/dt/jq-3.6.0/dt-1.13.4/datatables.min.js"></script>
+         <script>$(document).ready(function() {$('.my-table').DataTable({});})</script>
     </head>
     <body>
       <form action = "/" method = "POST">
-         <H1>名前を表示するアプリケーション</H1>
+         <H1>データ分析結果をサマリーするアプリケーション</H1>
+         {{dataTable | safe }}
          <h1>入力</h1>
-         <textarea type="text" name="name" placeholder="名前"></textarea>
+         <textarea type="text" name="query" placeholder="質問を入力して下さい。"></textarea>
          <br>
          <input type="submit" value="実行">
       </form>
       <h1>出力</h1>
-      <p>{{text}}</p>
-      <img src="/static/qiita-qiita-jobs-favicon.png">
+      {{result | safe }}
+      <!-- <p contentEditable="true">{{result | safe }}</p> -->
+      <!-- <img src="/static/qiita-qiita-jobs-favicon.png"> -->
    </body>
 </html>
