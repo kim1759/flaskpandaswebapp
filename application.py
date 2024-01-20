@@ -4,12 +4,11 @@ from pandasai import SmartDataframe as smartdf
 from pandasai.llm.openai import OpenAI
 import matplotlib
 import os
-import glob
 matplotlib.use('Agg')
 
 
 # your api key
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 # OpenAIのllmインスタンス
 llm = OpenAI(api_token=OPENAI_API_KEY, model="gpt-4-1106-preview")
 # PandasAIインスタンス
