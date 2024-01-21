@@ -3,3 +3,4 @@ matplotlib
 pandas
 pandasai
 requests
+japanize_matplotlib

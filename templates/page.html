@@ -15,18 +15,20 @@
          <H1>データ分析結果をサマリーするアプリケーション</H1>
          {{dataTable | safe }}
          <h1>入力</h1>
-         <textarea type="text" name="query" placeholder="質問を入力して下さい。" style="width:100%; height:80px;"></textarea>
+         <textarea type="text" name="query" placeholder="質問を入力して下さい。例）被害の割合を円グラフにして下さい。" style="width:100%; height:80px;"></textarea>
          <br>
          <input type="submit" value="実行">
       </form>
       <br>
       <h2>解析結果：</h2>
       <button type="button" onclick="generateAndPrintPDF()"><font size="8">PDF出力をする</font></button>
-      <div contentEditable="true" id ="output">
+      <br>
+      <fieldset contentEditable="true" id ="output">
+         <legend style="color:blue;font-weight:bold;">タップすると編集可能なエリアです！</legend>
          {% for result in results %}
             {{result | safe }}
          {% endfor %}
-      </div>
+      </fieldset>
       <!-- <p contentEditable="true">{{result | safe }}</p> -->
       <!-- <img src="/static/qiita-qiita-jobs-favicon.png"> -->
    </body>

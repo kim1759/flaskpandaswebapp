@@ -3,7 +3,9 @@ import pandas as pd
 from pandasai import SmartDataframe as smartdf
 from pandasai.llm.openai import OpenAI
 import matplotlib
+import japanize_matplotlib
 import os
+from datetime import datetime as dt
 matplotlib.use('Agg')
 
 
@@ -44,16 +46,16 @@ def main():
             # listPngs = glob.glob('static/*.png')
             # latest_file = max(listPngs, key=os.path.getctime)
             # div = f"<img src = '{latest_file}'>"
-            div = f"<img src = '{answer}'>"
+            div = f"<img src = '{answer}' width='500' height='400'>"
         
         elif type(answer) is str or type(answer) is int:
-            div = f'<div>Q:{query}:{str(answer)}</div>'
+            div = f'<div>{str(answer)}</div>'
 
         elif type(answer) is smartdf:
             dfHtmlResult = answer.to_html(classes='my-table')
             div = dfHtmlResult
         
-
+        resultElements.append(f"<h4>Q: {query} {dt.now().strftime('%Y/%m/%d %H:%M')}</h4>")
         resultElements.append(div)
         print("resultList:",resultElements)
         return render_template("page.html",dataTable = dfHtml, results=resultElements)
